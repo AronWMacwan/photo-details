@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photo Details</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='5' fill='%23008a8f'/><circle cx='12' cy='13' r='4' fill='none' stroke='white' stroke-width='2'/></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <svg class="logo" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="currentColor"/><path d="M8 7.5l1-1.5h6l1 1.5h1.5A1.5 1.5 0 0 1 19 9v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 16V9a1.5 1.5 0 0 1 1.5-1.5z" fill="#fff"/><circle cx="12" cy="12.5" r="2.8" fill="currentColor"/></svg>
+      <h1>Photo Details</h1>
+      <p class="sub">Capture a photo. Get its details automatically.</p>
+    </header>
+
+    <main class="layout">
+      <section class="card capture" aria-label="Photo capture">
+        <div id="banner" class="banner info"><span id="bannerText" role="status" aria-live="polite">Allow camera and location access to begin.</span></div>
+
+        <div class="stage" id="stage">
+          <div id="placeholder" class="placeholder" aria-hidden="true">
+            <svg viewBox="0 0 120 100"><path d="M0 80 Q25 50 50 72 T120 60 V100 H0z" fill="#d3ecec"/><g fill="none" stroke="#6d8396" stroke-width="5"><rect x="30" y="30" width="60" height="42" rx="8" fill="#eef3f6"/><circle cx="60" cy="52" r="13"/></g><circle cx="60" cy="52" r="8" fill="#6d8396"/></svg>
+          </div>
+          <video id="video" playsinline muted hidden aria-label="Live camera preview"></video>
+          <img id="photo" alt="Captured photo" hidden>
+          <span id="stageTag" class="tag" hidden></span>
+        </div>
+
+        <button id="takeBtn" class="btn primary" type="button"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7.5l1-1.5h6l1 1.5h1.5A1.5 1.5 0 0 1 19 9v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 16V9a1.5 1.5 0 0 1 1.5-1.5z" fill="currentColor"/><circle cx="12" cy="12.5" r="2.8" fill="#008a8f"/></svg><span id="takeLabel">Take Photo</span></button>
+
+        <div id="camRow" class="camrow" hidden>
+          <label for="camSelect" class="sr">Camera</label>
+          <select id="camSelect"></select>
+        </div>
+
+        <p id="hint" class="hint"></p>
+        <button id="webcamLink" class="link" type="button" hidden>Use the in-browser camera instead</button>
+        <p class="perm">Camera and location permission required.</p>
+      </section>
+
+      <section class="card details" aria-labelledby="dTitle">
+        <h2 id="dTitle">Photo details</h2>
+        <dl id="rows" class="rows"></dl>
+        <p class="note" id="note"></p>
+        <p class="fine">The photo stays in your browser. Only coordinates are sent to the address service (OpenStreetMap Nominatim).</p>
+      </section>
+    </main>
+  </div>
+
+  <input type="file" id="fileInput" accept="image/*" capture="environment" hidden>
+
+  <script src="https://cdn.jsdelivr.net/npm/exifr@7.1.3/dist/full.umd.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
