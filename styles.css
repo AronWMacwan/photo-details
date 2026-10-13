@@ -206,18 +206,6 @@ select {
   text-align: center;
 }
 
-.link {
-  display: block;
-  min-height: 44px;
-  margin: 4px auto 0;
-  padding: 0 8px;
-  border: 0;
-  background: none;
-  color: var(--teal);
-  font: inherit;
-  text-decoration: underline;
-  cursor: pointer;
-}
 
 /* ---------- Details panel ---------- */
 h2 {
